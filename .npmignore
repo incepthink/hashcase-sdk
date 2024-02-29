@@ -1,0 +1,45 @@
+# Source files
+src/
+
+# Dependency directories
+node_modules/
+.parcel-cache/
+
+# Test files
+tests/
+__tests__/
+
+# Configuration files
+tsconfig.json
+.npmr
+.env
+.nodemon.json
+.eslintrc
+.prettierrc
+.gitignore
+.eslintignore
+
+# Development tools
+webpack.config.js
+rollup.config.js
+babel.config.js
+
+# Documentation sources
+*.md
+!README.md
+
+# Continuous integration and deployment
+.travis.yml
+.gitlab-ci.yml
+.github/
+.gitignore
+
+# Editor settings and project files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
