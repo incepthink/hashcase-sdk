@@ -6,6 +6,7 @@ import {
   fetchCollections,
   fetchCollectionsOfOwner,
   fetchItem,
+  fetchItemOfCollectionNameAndTokenId,
   fetchItems,
   fetchItemsOfCollection,
   fetchItemsOfOwner
@@ -38,6 +39,7 @@ const hashcase_platform = {
   fetchCollections,
   fetchCollectionsOfOwner,
   fetchItem,
+  fetchItemOfCollectionNameAndTokenId,
   fetchItems,
   fetchItemsOfCollection,
   fetchItemsOfOwner,

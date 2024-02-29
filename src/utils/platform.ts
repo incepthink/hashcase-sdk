@@ -80,6 +80,35 @@ const fetchItem = async (itemId: number) => {
   }
 }
 
+const fetchItemOfCollectionNameAndTokenId = async (
+  collectionName: string,
+  tokenId: string
+) => {
+  try {
+    const res = await api.get(
+      '/platform/item/by-collection-name-and-token-id',
+      {
+        params: {
+          collection_name: collectionName,
+          token_id: tokenId
+        }
+      }
+    )
+    return {
+      res,
+      item_instance: res.data.item_instance
+    }
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      throw new Error(
+        'fetchItemOfCollectionNameAndTokenId: ' + error?.response?.data?.message
+      )
+    } else {
+      throw new Error('fetchItemOfCollectionNameAndTokenId: ' + error.message)
+    }
+  }
+}
+
 const fetchItems = async () => {
   try {
     const res = await api.get('/platform/items')
@@ -143,6 +172,7 @@ export {
   fetchCollections,
   fetchCollectionsOfOwner,
   fetchItem,
+  fetchItemOfCollectionNameAndTokenId,
   fetchItems,
   fetchItemsOfCollection,
   fetchItemsOfOwner
