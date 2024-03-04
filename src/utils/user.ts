@@ -36,7 +36,7 @@ const fetchUserNFTs = async () => {
 
 const claimNFT = async (item_id: number, amount: number = 1) => {
   try {
-    const res = await api.post('/user/nft/claim', {
+    const res = await api.post('/user/claim', {
       item_id,
       amount
     })
