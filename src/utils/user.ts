@@ -57,13 +57,17 @@ const claimNFT = async (item_id: number, amount: number = 1) => {
 const mintNFT = async (
   collection_id: number,
   amount: number = 1,
-  metadata: object
+  metadata: FormData
 ) => {
   try {
-    const res = await api.post('/user/mint', {
-      collection_id,
-      amount,
-      ...metadata
+    const res = await api.post('/user/mint', metadata, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+      params: {
+        collection_id,
+        amount
+      }
     })
     return {
       res,
