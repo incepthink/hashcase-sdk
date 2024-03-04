@@ -54,4 +54,29 @@ const claimNFT = async (item_id: number, amount: number = 1) => {
   }
 }
 
-export { fetchUserInfo, fetchUserNFTs, claimNFT }
+const mintNFT = async (
+  collection_id: number,
+  amount: number = 1,
+  metadata: object
+) => {
+  try {
+    const res = await api.post('/user/mint', {
+      collection_id,
+      amount,
+      ...metadata
+    })
+    return {
+      res,
+      receipt: res.data.receipt,
+      message: res.data.message
+    }
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      throw new Error('claimNFT: ' + error?.response?.data?.message)
+    } else {
+      throw new Error('claimNFT: ' + error.message)
+    }
+  }
+}
+
+export { fetchUserInfo, fetchUserNFTs, claimNFT, mintNFT }

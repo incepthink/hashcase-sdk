@@ -11,7 +11,7 @@ import {
   fetchItemsOfCollection,
   fetchItemsOfOwner
 } from './utils/platform'
-import { fetchUserInfo, fetchUserNFTs, claimNFT } from './utils/user'
+import { fetchUserInfo, fetchUserNFTs, claimNFT, mintNFT } from './utils/user'
 
 const init = ({
   apiKey,
@@ -46,6 +46,7 @@ const hashcase_platform = {
   fetchUserInfo,
   fetchUserNFTs,
   claimNFT,
+  mintNFT,
   requestToken,
   walletLogin,
   magicLogin
