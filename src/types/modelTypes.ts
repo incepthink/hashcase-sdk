@@ -64,6 +64,34 @@ type DevAPIAttributes = {
   attributes?: string
 }
 
+type User = UserAttributes & {
+  id: number
+}
+
+type Collection = CollectionAttributes & {
+  id: number
+}
+
+type Item = ItemAttributes & {
+  id: number
+}
+
+type Owner = OwnerAttributes & {
+  id: number
+}
+
+type Paymaster = PaymasterAttributes & {
+  id: number
+}
+
+type NFT = NFTAttributes & {
+  id: number
+}
+
+type DevAPI = DevAPIAttributes & {
+  id: number
+}
+
 export type {
   UserAttributes,
   CollectionAttributes,
@@ -71,5 +99,12 @@ export type {
   OwnerAttributes,
   PaymasterAttributes,
   NFTAttributes,
-  DevAPIAttributes
+  DevAPIAttributes,
+  User,
+  Collection,
+  Item,
+  Owner,
+  Paymaster,
+  NFT,
+  DevAPI
 }

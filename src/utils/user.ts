@@ -1,10 +1,16 @@
-import { AxiosError } from 'axios'
+import { AxiosError, AxiosResponse } from 'axios'
+import { TransactionReceipt } from 'ethers'
+
+import { User, NFT } from '../types'
 
 import { api } from './axios'
 
-const fetchUserInfo = async () => {
+const fetchUserInfo = async (): Promise<{
+  res: AxiosResponse
+  user_instance: User
+}> => {
   try {
-    const res = await api.get('/user')
+    const res: AxiosResponse = await api.get('/user')
     return {
       res,
       user_instance: res.data.user_instance
@@ -18,9 +24,12 @@ const fetchUserInfo = async () => {
   }
 }
 
-const fetchUserNFTs = async () => {
+const fetchUserNFTs = async (): Promise<{
+  res: AxiosResponse
+  nfts: NFT[]
+}> => {
   try {
-    const res = await api.get('/user/nfts')
+    const res: AxiosResponse = await api.get('/user/nfts')
     return {
       res,
       nfts: res.data.nfts
@@ -34,9 +43,16 @@ const fetchUserNFTs = async () => {
   }
 }
 
-const claimNFT = async (item_id: number, amount: number = 1) => {
+const claimNFT = async (
+  item_id: number,
+  amount: number = 1
+): Promise<{
+  res: AxiosResponse
+  receipt: TransactionReceipt
+  message: string
+}> => {
   try {
-    const res = await api.post('/user/claim', {
+    const res: AxiosResponse = await api.post('/user/claim', {
       item_id,
       amount
     })
@@ -58,9 +74,13 @@ const mintNFT = async (
   collection_id: number,
   amount: number = 1,
   metadata: FormData
-) => {
+): Promise<{
+  res: AxiosResponse
+  receipt: TransactionReceipt
+  message: string
+}> => {
   try {
-    const res = await api.post('/user/mint', metadata, {
+    const res: AxiosResponse = await api.post('/user/mint', metadata, {
       headers: {
         'Content-Type': 'multipart/form-data'
       },
@@ -76,9 +96,9 @@ const mintNFT = async (
     }
   } catch (error) {
     if (error instanceof AxiosError) {
-      throw new Error('claimNFT: ' + error?.response?.data?.message)
+      throw new Error('mintNFT: ' + error?.response?.data?.message)
     } else {
-      throw new Error('claimNFT: ' + error.message)
+      throw new Error('mintNFT: ' + error.message)
     }
   }
 }

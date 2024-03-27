@@ -1,8 +1,15 @@
-import { AxiosError } from 'axios'
+import { AxiosError, AxiosResponse } from 'axios'
+
+import { Collection, Item } from '../types/modelTypes'
 
 import { api } from './axios'
 
-const fetchCollection = async (collectionId: number) => {
+const fetchCollection = async (
+  collectionId: number
+): Promise<{
+  res: AxiosResponse
+  collection_instance: Collection
+}> => {
   try {
     const res = await api.get('/platform/collection', {
       params: {
@@ -22,7 +29,10 @@ const fetchCollection = async (collectionId: number) => {
   }
 }
 
-const fetchCollections = async () => {
+const fetchCollections = async (): Promise<{
+  res: AxiosResponse
+  collections: Collection[]
+}> => {
   try {
     const res = await api.get('/platform/collections')
     return {
@@ -38,7 +48,12 @@ const fetchCollections = async () => {
   }
 }
 
-const fetchCollectionsOfOwner = async (ownerId: number) => {
+const fetchCollectionsOfOwner = async (
+  ownerId: number
+): Promise<{
+  res: AxiosResponse
+  collections: Collection[]
+}> => {
   try {
     const res = await api.get('/platform/collections/byowner', {
       params: {
@@ -60,7 +75,12 @@ const fetchCollectionsOfOwner = async (ownerId: number) => {
   }
 }
 
-const fetchItem = async (itemId: number) => {
+const fetchItem = async (
+  itemId: number
+): Promise<{
+  res: AxiosResponse
+  item_instance: Item
+}> => {
   try {
     const res = await api.get('/platform/item', {
       params: {
@@ -83,7 +103,10 @@ const fetchItem = async (itemId: number) => {
 const fetchItemOfCollectionNameAndTokenId = async (
   collectionName: string,
   tokenId: string
-) => {
+): Promise<{
+  res: AxiosResponse
+  item_instance: Item
+}> => {
   try {
     const res = await api.get(
       '/platform/item/by-collection-name-and-token-id',
@@ -109,7 +132,10 @@ const fetchItemOfCollectionNameAndTokenId = async (
   }
 }
 
-const fetchItems = async () => {
+const fetchItems = async (): Promise<{
+  res: AxiosResponse
+  items: Item[]
+}> => {
   try {
     const res = await api.get('/platform/items')
     return {
@@ -125,7 +151,12 @@ const fetchItems = async () => {
   }
 }
 
-const fetchItemsOfCollection = async (collectionId: number) => {
+const fetchItemsOfCollection = async (
+  collectionId: number
+): Promise<{
+  res: AxiosResponse
+  items: Item[]
+}> => {
   try {
     const res = await api.get('/platform/items/bycollection', {
       params: {
@@ -147,7 +178,12 @@ const fetchItemsOfCollection = async (collectionId: number) => {
   }
 }
 
-const fetchItemsOfOwner = async (ownerId: number) => {
+const fetchItemsOfOwner = async (
+  ownerId: number
+): Promise<{
+  res: AxiosResponse
+  items: Item[]
+}> => {
   try {
     const res = await api.get('/platform/items/byowner', {
       params: {

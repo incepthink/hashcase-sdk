@@ -1,8 +1,14 @@
-import { AxiosError } from 'axios'
+import { AxiosError, AxiosResponse } from 'axios'
+
+import { Owner, User } from '../types/modelTypes'
 
 import { api } from './axios'
 
-const requestToken = async () => {
+const requestToken = async (): Promise<{
+  res: AxiosResponse
+  token: string
+  message: string
+}> => {
   try {
     const res = await api.get('/auth/wallet/request-token')
     return {
@@ -23,7 +29,11 @@ const walletLogin = async (
   signature: string,
   address: string,
   token: string
-) => {
+): Promise<{
+  res: AxiosResponse
+  token: string
+  user_instance: User
+}> => {
   try {
     const res = await api.post('/auth/wallet/login', {
       signature,
@@ -44,7 +54,13 @@ const walletLogin = async (
   }
 }
 
-const magicLogin = async (didToken: string) => {
+const magicLogin = async (
+  didToken: string
+): Promise<{
+  res: AxiosResponse
+  token: string
+  user_instance: User
+}> => {
   try {
     const res = await api.post('/auth/magic/login', {
       didToken
@@ -63,7 +79,14 @@ const magicLogin = async (didToken: string) => {
   }
 }
 
-const ownerLogin = async (email: string, password: string) => {
+const ownerLogin = async (
+  email: string,
+  password: string
+): Promise<{
+  res: AxiosResponse
+  token: string
+  owner_instance: Owner
+}> => {
   try {
     const res = await api.post('/auth/owner/login', {
       email,

@@ -1,6 +1,5 @@
 import { requestToken, walletLogin, magicLogin } from './utils/auth'
-import { initializeApi, setOwner, setUser } from './utils/axios'
-import { createCollection, createItem, fetchAPIKeys } from './utils/owner'
+import { initializeApi, setUser } from './utils/axios'
 import {
   fetchCollection,
   fetchCollections,
@@ -23,15 +22,6 @@ const init = ({
   initializeApi(apiKey, apiBase)
 }
 
-const hashcase = {
-  init,
-  fetchAPIKeys,
-  setOwner,
-  setUser,
-  createCollection,
-  createItem
-}
-
 const hashcase_platform = {
   init,
   setUser,
@@ -52,5 +42,6 @@ const hashcase_platform = {
   magicLogin
 }
 
-export default hashcase
 export { hashcase_platform }
+export * from './types'
+export * from './enums'
