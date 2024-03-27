@@ -5,6 +5,9 @@ src/
 node_modules/
 .parcel-cache/
 
+# Additional files
+postprocessor.js
+
 # Test files
 tests/
 __tests__/
@@ -18,6 +21,7 @@ tsconfig.json
 .prettierrc
 .gitignore
 .eslintignore
+.github/
 
 # Development tools
 webpack.config.js
