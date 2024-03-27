@@ -1,6 +1,6 @@
 import { AxiosError, AxiosResponse } from 'axios'
 
-import { Owner, User } from '../types/modelTypes'
+import { Owner, User } from '../types'
 
 import { api } from './axios'
 

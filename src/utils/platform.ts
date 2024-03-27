@@ -1,6 +1,6 @@
 import { AxiosError, AxiosResponse } from 'axios'
 
-import { Collection, Item } from '../types/modelTypes'
+import { Collection, Item } from '../types'
 
 import { api } from './axios'
 

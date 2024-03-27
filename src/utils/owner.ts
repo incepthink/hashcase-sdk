@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios'
 
-import type { CollectionAttributes, ItemAttributes } from '../types/modelTypes'
+import type { CollectionAttributes, ItemAttributes } from '../types'
 
 import { api } from './axios'
 
